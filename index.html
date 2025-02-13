@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Instructions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .settings { background-color: #f4b400; }
+        .start { background-color: #34a853; }
+        .stop { background-color: #ea4335; }
+    </style>
+    <script>
+        function setAdmissionNumber() {
+            let admissionNumber = prompt("Enter your Admission Number (or use DOB as DDMMYYYY)");
+            if (admissionNumber) {
+                localStorage.setItem("admissionNumber", admissionNumber);
+                alert("Admission Number Saved!");
+            }
+        }
+
+        function startExam() {
+            let admissionNumber = localStorage.getItem("admissionNumber");
+            if (!admissionNumber) {
+                alert("Please set your Admission Number first!");
+                return;
+            }
+            window.open("https://www.tinkercad.com", "_blank");
+            alert("Pick a question and start designing in Tinkercad!");
+        }
+
+        function stopExam() {
+            alert("Click OK and call the invigilator now!");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Exam Instructions</h2>
+        <p>1. Click on the Settings button & enter your admission number (or use your DOB as DDMMYYYY).</p>
+        <p>2. Click on the Start button, pick a question, and log into Tinkercad.</p>
+        <p>3. After completing your design, click Stop and call the invigilator.</p>
+        <button class="settings" onclick="setAdmissionNumber()">Settings</button>
+        <button class="start" onclick="startExam()">Start</button>
+        <button class="stop" onclick="stopExam()">Stop</button>
+    </div>
+</body>
+</html>
